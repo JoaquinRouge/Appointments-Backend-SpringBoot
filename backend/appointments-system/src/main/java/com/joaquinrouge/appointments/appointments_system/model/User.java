@@ -1,11 +1,17 @@
 package com.joaquinrouge.appointments.appointments_system.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -17,19 +23,37 @@ public class User {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+	private List<Appointment> appointments;
 	
 	public User() {
 		
 	}
 
-	public User(Long id, String username, String email, String password, Role role) {
+	public User(Long id, String username, String email, String password, Role role, List<Appointment> appointments) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.role = role;
+		this.appointments = appointments;
 	}
+
+
+
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
+
+
+
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
+	}
+
+
 
 	public Long getId() {
 		return id;
