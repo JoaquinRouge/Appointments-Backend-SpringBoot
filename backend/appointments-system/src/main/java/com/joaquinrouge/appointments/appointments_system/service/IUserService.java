@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
+import com.joaquinrouge.appointments.appointments_system.DTO.UserDTO;
 import com.joaquinrouge.appointments.appointments_system.model.User;
 
 public interface IUserService {
@@ -12,4 +13,5 @@ public interface IUserService {
 	public User createUser(User User);
 	public User updateUser(User user);
 	public Long deleteUser(Long id);
+	public UserDTO login(String email,String password);
 }

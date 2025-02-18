@@ -54,8 +54,14 @@ public class AppointmentService implements IAppointmentService{
 
 	@Override
 	public Long deleteAppointment(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+	    if (!repository.existsById(id)) {
+	        throw new IllegalArgumentException("Appointment with id " + id + " not found.");
+	    }
+		
+		repository.deleteById(id);
+		
+		return id;
 	}
 
 }

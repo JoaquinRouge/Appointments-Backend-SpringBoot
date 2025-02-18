@@ -1,13 +1,14 @@
 package com.joaquinrouge.appointments.appointments_system.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.joaquinrouge.appointments.appointments_system.DTO.UserDTO;
 import com.joaquinrouge.appointments.appointments_system.model.User;
 import com.joaquinrouge.appointments.appointments_system.repository.IUserRepository;
+import com.joaquinrouge.appointments.appointments_system.security.PasswordUtils;
 
 @Service
 public class UserService implements IUserService {
@@ -36,6 +37,8 @@ public class UserService implements IUserService {
     	if(repository.existsByUsername(user.getUsername())) {
     		throw new IllegalArgumentException("The username already exists.");
     	}
+    	
+    	user.setPassword(PasswordUtils.encryptPassword(user.getPassword()));
     	
         return repository.save(user);
     }
@@ -71,6 +74,26 @@ public class UserService implements IUserService {
         }
         repository.deleteById(id);
         return id;
+    }
+    
+    @Override
+    public UserDTO login(String email,String password) {
+    	
+        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+            throw new IllegalArgumentException("Email and password must not be empty.");
+        }
+    	
+    	User user = repository.findByEmail(email);
+    	
+    	if(user == null) {
+    		throw new IllegalArgumentException("User with email " + email + " not found.");
+    	}
+    	
+    	if(!PasswordUtils.verifyPassword(password, user.getPassword())) {
+    		throw new IllegalArgumentException("Incorrect password.");
+    	}
+    	
+		return new UserDTO(user.getId(),user.getUsername(),user.getEmail());
     }
     
 }
