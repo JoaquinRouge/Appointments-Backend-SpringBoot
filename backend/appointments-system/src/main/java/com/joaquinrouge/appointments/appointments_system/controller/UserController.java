@@ -1,6 +1,7 @@
 package com.joaquinrouge.appointments.appointments_system.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.joaquinrouge.appointments.appointments_system.DTO.LoginDTO;
 import com.joaquinrouge.appointments.appointments_system.DTO.UserDTO;
 import com.joaquinrouge.appointments.appointments_system.model.User;
 import com.joaquinrouge.appointments.appointments_system.service.IUserService;
@@ -83,7 +85,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password){
+	public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO){
+		
+	    String email = loginDTO.getEmail();
+	    String password = loginDTO.getPassword();
+		
 		try {
 			UserDTO userDTO = userService.login(email, password); 
 			return ResponseEntity.status(HttpStatus.OK).body(userDTO);

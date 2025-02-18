@@ -93,7 +93,7 @@ public class UserService implements IUserService {
     		throw new IllegalArgumentException("Incorrect password.");
     	}
     	
-		return new UserDTO(user.getId(),user.getUsername(),user.getEmail());
+		return new UserDTO(user.getId(),user.getUsername(),user.getEmail(),user.getRole());
     }
     
 }
