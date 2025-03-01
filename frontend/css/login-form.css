@@ -67,21 +67,19 @@ body {
 }
 
 .btn:hover {
-    background: white;
-    color: black;
-    border: 1px solid rgb(169, 164, 164);
+    background: #7fb1e7;
 }
 
-.forgot-password {
+.register {
     margin-top: 10px;
     font-size: 0.9rem;
 }
 
-.forgot-password a {
+.register a {
     color: #578FCA;
     text-decoration: none;
 }
 
-.forgot-password a:hover {
+.register a:hover {
     text-decoration: underline;
 }

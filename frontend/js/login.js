@@ -1,5 +1,5 @@
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
-    e.preventDefault(); // Evita que la página se recargue
+    e.preventDefault();
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -24,13 +24,13 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
         const userData = await response.json();
 
         if (userData.role == "USER") {
-            console.log("USER NORMAL")
+            window.location.href = "user.html";
         } else {
-            console.log("ADMIN")
+            window.location.href = "admin.html";
         }
         
     } catch (error) {
-        console.error("Error al iniciar sesión:", error.message);
+        alert(error.message);
     }
 });
 
