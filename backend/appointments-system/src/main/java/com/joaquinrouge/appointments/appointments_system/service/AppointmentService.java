@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.joaquinrouge.appointments.appointments_system.model.Appointment;
 import com.joaquinrouge.appointments.appointments_system.repository.IAppointmentRepository;
 
+@Service
 public class AppointmentService implements IAppointmentService{
 
 	@Autowired
@@ -38,6 +40,11 @@ public class AppointmentService implements IAppointmentService{
 
 	@Override
 	public Appointment createAppointment(Appointment appointment) {
+		
+		if(repository.findByDate(appointment.getDate()).isPresent()) {
+			throw new IllegalArgumentException("There is already an appointment in this date.");
+		}
+		
 		return repository.save(appointment);
 	}
 

@@ -1,5 +1,6 @@
 package com.joaquinrouge.appointments.appointments_system.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -31,14 +32,14 @@ public class User {
 		
 	}
 
-	public User(Long id, String username, String email, String password, Role role, List<Appointment> appointments) {
+	public User(Long id, String username, String email, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.role = role;
-		this.appointments = appointments;
+		this.role = Role.USER;
+		this.appointments = new ArrayList<>(); 
 	}
 
 

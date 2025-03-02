@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.joaquinrouge.appointments.appointments_system.DTO.UserDTO;
+import com.joaquinrouge.appointments.appointments_system.model.Role;
 import com.joaquinrouge.appointments.appointments_system.model.User;
 import com.joaquinrouge.appointments.appointments_system.repository.IUserRepository;
 import com.joaquinrouge.appointments.appointments_system.security.PasswordUtils;
@@ -37,6 +38,10 @@ public class UserService implements IUserService {
     	if(repository.existsByUsername(user.getUsername())) {
     		throw new IllegalArgumentException("The username already exists.");
     	}
+    	
+        if (user.getRole() == null) {
+            user.setRole(Role.USER);
+        }
     	
     	user.setPassword(PasswordUtils.encryptPassword(user.getPassword()));
     	

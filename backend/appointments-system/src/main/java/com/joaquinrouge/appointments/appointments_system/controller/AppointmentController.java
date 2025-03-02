@@ -8,13 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.joaquinrouge.appointments.appointments_system.model.Appointment;
-import com.joaquinrouge.appointments.appointments_system.model.User;
 import com.joaquinrouge.appointments.appointments_system.service.IAppointmentService;
 
 @RestController
@@ -47,7 +47,7 @@ public class AppointmentController {
 		}
 	}
 	
-	@GetMapping("/create")
+	@PostMapping("/create")
 	public ResponseEntity<?> createAppointment(@RequestBody Appointment appointment){
 		try {
 			Appointment create = appointmentService.createAppointment(appointment);
@@ -58,7 +58,7 @@ public class AppointmentController {
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<?> updateUser(@RequestBody Appointment appointment){
+	public ResponseEntity<?> updateAppointment(@RequestBody Appointment appointment){
 		try {
 			Appointment updateAppointment = appointmentService.updateAppointment(appointment);
 			return ResponseEntity.status(HttpStatus.CREATED).body(updateAppointment);
@@ -68,7 +68,7 @@ public class AppointmentController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteUser(@PathVariable Long id){
+	public ResponseEntity<?> deleteAppointment(@PathVariable Long id){
 		try {
 			Long appointmentDeletedId = appointmentService.deleteAppointment(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Appointment with id: " + appointmentDeletedId + " was deleted.");
