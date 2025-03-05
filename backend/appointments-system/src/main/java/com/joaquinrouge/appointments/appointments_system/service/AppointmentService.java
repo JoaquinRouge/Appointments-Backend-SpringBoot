@@ -50,12 +50,7 @@ public class AppointmentService implements IAppointmentService{
 
 	@Override
 	public Appointment updateAppointment(Appointment appoinment) {
-		Optional<Appointment> dateIsInDataBase = repository.findByDate(appoinment.getDate());
-		
-		if(dateIsInDataBase.isPresent()) {
-			throw new IllegalArgumentException("You already have an appointment with the same date.");
-		}
-		
+
 		return repository.save(appoinment);
 	}
 
@@ -69,6 +64,17 @@ public class AppointmentService implements IAppointmentService{
 		repository.deleteById(id);
 		
 		return id;
+	}
+
+	@Override
+	public Optional<List<Appointment>> getAppointmentsFromUserId(Long id) {
+		Optional<List<Appointment>> listFromDB = repository.findByUser_id(id);
+		
+		if(listFromDB.isEmpty()) {
+			throw new IllegalArgumentException("The user with id " + id + " does'nt have any appointment.");
+		}
+		
+		return listFromDB;
 	}
 
 }

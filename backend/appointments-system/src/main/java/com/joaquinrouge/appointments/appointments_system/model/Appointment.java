@@ -30,12 +30,11 @@ public class Appointment {
 		
 	}
 
-	public Appointment(Long id, LocalDateTime date, boolean reserved, User user) {
+	public Appointment(LocalDateTime date) {
 		super();
-		this.id = id;
 		this.date = date;
-		this.reserved = reserved;
-		this.user = user;
+		this.reserved = false;
+		this.user = null;
 	}
 
 	public Long getId() {
@@ -62,9 +61,10 @@ public class Appointment {
 		this.reserved = isReserved;
 	}
 
-	public User getUser() {
-		return user;
+	public Long getUserId() {
+	    return (user != null) ? user.getId() : null;
 	}
+
 
 	public void setUser(User user) {
 		this.user = user;

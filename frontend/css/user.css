@@ -10,9 +10,23 @@ header{
     height: 100px;  
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
     font-family: 'Montserrat';
+}
+
+a{
+    color: black;
+}
+
+nav{
+    display: flex;
+    gap: 20px;
+}
+
+#headerP{
+    font-size: 20px;
 }
 
 #appointments{
@@ -61,7 +75,31 @@ header{
     cursor: pointer;
     font-family: 'Montserrat';
 }
+
 .btn-reservar:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
+footer{
+    text-align: center;
+    background-color: #7fb1e7;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial';
+}
+
+i{
+    font-size: 35px;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+i:hover{
+    background: #7fb1e7;
+    cursor: pointer;
+}
+

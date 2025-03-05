@@ -23,14 +23,18 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
         const userData = await response.json();
 
-        if (userData.role == "USER") {
-            window.location.href = "user.html";
-        } else {
-            window.location.href = "admin.html";
+        if (!userData || !userData.role || !userData.id) {
+            throw new Error("Respuesta del servidor inválida");
         }
-        
+
+        sessionStorage.setItem("user", JSON.stringify(userData));
+
+        // Redirigir según el rol
+        window.location.href = userData.role === "USER" ? "user.html" : "admin.html";
+
     } catch (error) {
         alert(error.message);
     }
 });
 
+// Mostrar el ID del usuario si está logueado

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eliminar Cita</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./css/delete.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Lista de Citas</h2>
+      <div id="appointments-list" class="appointments-container"></div>
+      <a href="./admin.html">Volver a inicio</a>
+    </div>
+
+    <!-- Modal de Confirmación -->
+    <div id="confirmation-modal" class="modal">
+      <div class="modal-content">
+        <p>¿Estás seguro de que deseas eliminar esta cita?</p>
+        <button id="confirm-delete" class="btn confirm">Sí</button>
+        <button id="cancel-delete" class="btn cancel">No</button>
+      </div>
+    </div>
+
+    <script src="./js/delete.js"></script>
+  </body>
+</html>

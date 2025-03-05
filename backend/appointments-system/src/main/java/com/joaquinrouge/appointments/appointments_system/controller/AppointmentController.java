@@ -1,6 +1,7 @@
 package com.joaquinrouge.appointments.appointments_system.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -72,6 +73,16 @@ public class AppointmentController {
 		try {
 			Long appointmentDeletedId = appointmentService.deleteAppointment(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Appointment with id: " + appointmentDeletedId + " was deleted.");
+		}catch(IllegalArgumentException e) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage()); 
+		}
+	}
+	
+	@GetMapping("/user/{id}")
+	public ResponseEntity<?> getAppointmentsFromUserId(@PathVariable Long id){
+		try {
+			Optional<List<Appointment>> list = appointmentService.getAppointmentsFromUserId(id);
+			return ResponseEntity.status(HttpStatus.OK).body(list);
 		}catch(IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage()); 
 		}
