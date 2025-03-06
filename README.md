@@ -2,11 +2,13 @@
 
 ## Descripción: 
 
-  Autor: Joaquín Rougé Núñez.
+Autor: Joaquín Rougé Núñez
 
-  Este es un proyecto backend desarrollado con Spring Boot que permite gestionar usuarios y turnos.
-  Implementa un sistema CRUD completo para cada una de sus entidades y maneja la persistencia de datos con JPA e Hibernate MySQL.
-  Ademas utiliza un sistema de encriptación de contraseña para cada usuario (BCrypt).
+Este proyecto backend, desarrollado con Spring Boot, permite gestionar usuarios y turnos. Implementa un sistema CRUD completo para cada entidad y maneja la persistencia de datos con JPA e Hibernate, utilizando MySQL como base de datos.
+
+Además, incorpora un sistema de encriptación de contraseñas con BCrypt para garantizar la seguridad de los usuarios.
+
+El proyecto cuenta con una interfaz frontend integrada para visualizar de manera más cómoda los apartados de la API. Sin embargo, el objetivo principal de este desarrollo fue demostrar mis habilidades en backend, por lo que el frontend no fue la prioridad y es probable encontrar malas practicas en el.
 
 ## Tecnologías Utilizadas:
   
