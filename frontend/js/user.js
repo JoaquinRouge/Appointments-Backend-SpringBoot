@@ -1,6 +1,14 @@
 
 const appointmentsDiv = document.getElementById("appointments")
 
+const user = sessionStorage.getItem("user");
+const userData = JSON.parse(user); // Parseo el string a objeto
+const headerP = document.getElementById("headerP");
+
+if (headerP) {
+    headerP.innerHTML += userData.username;
+}
+
 function formatDate(dateString) {
     // Separar la fecha y la hora
     let [datePart, timePart] = dateString.split('-').reduce((acc, val, index) => {
@@ -94,7 +102,7 @@ async function getAppointments() {
 async function updateAppointment(appointment) {
     try {
         const response = await fetch("http://localhost:8080/appointments/update", {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
