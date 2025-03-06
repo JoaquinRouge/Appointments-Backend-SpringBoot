@@ -10,6 +10,8 @@ Además, incorpora un sistema de encriptación de contraseñas con BCrypt para g
 
 El proyecto cuenta con una interfaz frontend integrada para visualizar de manera más cómoda los apartados de la API. Sin embargo, el objetivo principal de este desarrollo fue demostrar mis habilidades en backend, por lo que el frontend no fue la prioridad y es probable encontrar malas practicas en el.
 
+Al acceder a la url /admin.html se podra acceder a todas las funcionalidades de administrador que permite la api.
+
 ## Tecnologías Utilizadas:
   
   - Java 23
