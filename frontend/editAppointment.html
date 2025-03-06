@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointments</title>
+    <link rel="stylesheet" href="./css/edit.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="appointments-list" class="appointments-list">
+        <!-- Las tarjetas de appointments se cargarán aquí -->
+      </div>
+    </div>
+
+    <!-- Modal de edición -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Editar Appointment</h2>
+        <form id="edit-form">
+          <label for="date">Fecha</label>
+          <input type="text" id="date" name="date" required />
+          <button type="submit">Guardar cambios</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="./js/edit.js"></script>
+  </body>
+</html>

@@ -10,20 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
     function fetchAppointments() {
         fetch("http://localhost:8080/appointments")
             .then(response => response.json())
-            .then(data => {
+            .then(async (data) => { // 👈 Hacemos que el callback sea async
                 appointmentsList.innerHTML = "";
-                data.forEach(appointment => {
+    
+                for (const appointment of data) {
                     const card = document.createElement("div");
                     card.classList.add("card");
+    
+                    // Esperamos a obtener el username
+                    const username = await renderAppointment(appointment);
+    
                     card.innerHTML = `
-                        <span>Id: ${appointment.id} -  Date: ${appointment.date} - User id: ${appointment.userId}</span>
+                        <span>Id: ${appointment.id} - Date: ${appointment.date} - User: ${username}</span>
                         <button class="delete-btn" data-id="${appointment.id}">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     `;
                     appointmentsList.appendChild(card);
-                });
-
+                }
+    
                 document.querySelectorAll(".delete-btn").forEach(btn => {
                     btn.addEventListener("click", (e) => {
                         selectedAppointmentId = e.target.closest("button").getAttribute("data-id");
@@ -33,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => console.error("Error al cargar citas:", error));
     }
+    
 
     // Confirmar eliminación
     confirmBtn.addEventListener("click", () => {
@@ -60,3 +66,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetchAppointments();
 });
+
+async function getUserName(id) {
+    try {
+        const response = await fetch(`http://localhost:8080/users/${id}`);
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+        const user = await response.json();
+        return user;
+    } catch (error) {
+        console.error("Error fetching user:", error);
+        return null;
+    }
+}
+
+async function renderAppointment(appointment) {
+    const user = await getUserName(appointment.userId);
+    return user.username;
+}
