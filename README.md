@@ -69,7 +69,7 @@ Obtiene los datos de un usuario específico según su ID.
 Crea un nuevo usuario en la base de datos.
 
 **Cuerpo de la solicitud (JSON):**
-```json
+
 {
   "name": "John Doe",
   "email": "johndoe@example.com",
