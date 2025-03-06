@@ -1,12 +1,14 @@
-Proyecto de gestión de turnos y usuarios con Spring Boot JPA e Hibernate.
+# Proyecto de gestión de turnos y usuarios con Spring Boot JPA e Hibernate.
 
-Descripción: 
+## Descripción: 
+
+  Autor: Joaquín Rougé Núñez.
 
   Este es un proyecto backend desarrollado con Spring Boot que permite gestionar usuarios y turnos.
   Implementa un sistema CRUD completo para cada una de sus entidades y maneja la persistencia de datos con JPA e Hibernate MySQL.
   Ademas utiliza un sistema de encriptación de contraseña para cada usuario (BCrypt).
 
-Tecnologías Utilizadas:
+## Tecnologías Utilizadas:
   
   - Java 23
   
@@ -18,19 +20,19 @@ Tecnologías Utilizadas:
   
   - Maven
 
-Clonar el repositorio:
+## Clonar el repositorio:
 
   git clone https://github.com/JoaquinRouge/Appointments-Backend-SpringBoot.git
 
-Configurar la base de datos en application.properties:
+## Configurar la base de datos en application.properties:
   
   spring.datasource.url=jdbc:mysql://localhost:3306/nombre_bd spring.datasource.username=tu_usuario spring.datasource.password=tu_contraseña spring.jpa.hibernate.ddl-auto=update
 
-Construir y ejecutar la aplicación:
+## Construir y ejecutar la aplicación:
 
   mvn spring-boot:run
 
-Uso: 
+## Uso: 
 
 # API Endpoints
 
