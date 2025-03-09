@@ -218,7 +218,7 @@ Modifica los detalles de una cita ya existente.
 {
   "id": 5,
   "date": "2025-03-11T16:00:00",
-  "status": "CONFIRMED"
+  "reserved": "true"
 }
 ```
 
