@@ -196,8 +196,7 @@ Registra una nueva cita en la base de datos.
 {
   "date": "2025-03-10T14:00:00",
   "userId": 1,
-  "doctorId": 2,
-  "status": "PENDING"
+  "reserved": true,
 }
 ```
 
